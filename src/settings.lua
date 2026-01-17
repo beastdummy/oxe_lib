@@ -32,7 +32,12 @@ local settings = {
 -- Parse custom theme if provided
 local customThemeConvar = GetConvar('oxe_lib:customTheme', '')
 if customThemeConvar ~= '' then
-    settings.customTheme = json.decode(customThemeConvar)
+    local success, theme = pcall(json.decode, customThemeConvar)
+    if success then
+        settings.customTheme = theme
+    else
+        print('[oxe_lib] Warning: Invalid JSON in customTheme convar')
+    end
 end
 
 return settings

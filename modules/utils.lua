@@ -17,7 +17,16 @@ function utils.formatCurrency(amount)
     }
     
     local symbol = symbols[currency] or currency
-    return ('%s%s'):format(symbol, amount)
+    
+    -- Format with thousands separator and 2 decimal places
+    local formatted = string.format('%.2f', amount)
+    local k
+    formatted, k = formatted:gsub('^(-?%d+)(%d%d%d)', '%1,%2')
+    while k ~= 0 do
+        formatted, k = formatted:gsub('^(-?%d+)(%d%d%d),', '%1,%2,')
+    end
+    
+    return ('%s%s'):format(symbol, formatted)
 end
 
 ---Get distance between two coordinates

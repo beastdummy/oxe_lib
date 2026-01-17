@@ -7,10 +7,10 @@ local bridge = {}
 function bridge.HasKey(vehicle)
     if IsDuplicityVersion() then
         return false
-    else
-        local plate = type(vehicle) == 'number' and GetVehicleNumberPlateText(vehicle) or vehicle
-        return exports['qs-vehiclekeys']:HasKey(plate)
     end
+    
+    local plate = type(vehicle) == 'number' and GetVehicleNumberPlateText(vehicle) or vehicle
+    return exports['qs-vehiclekeys']:HasKey(plate)
 end
 
 ---Lock vehicle
@@ -19,15 +19,15 @@ end
 function bridge.Lock(vehicle)
     if IsDuplicityVersion() then
         return false
-    else
-        local plate = GetVehicleNumberPlateText(vehicle)
-        if bridge.HasKey(vehicle) then
-            SetVehicleDoorsLocked(vehicle, 2)
-            exports['qs-vehiclekeys']:SetLockStatus(plate, 2)
-            return true
-        end
-        return false
     end
+    
+    local plate = GetVehicleNumberPlateText(vehicle)
+    if bridge.HasKey(vehicle) then
+        SetVehicleDoorsLocked(vehicle, 2)
+        exports['qs-vehiclekeys']:SetLockStatus(plate, 2)
+        return true
+    end
+    return false
 end
 
 ---Unlock vehicle
@@ -36,15 +36,15 @@ end
 function bridge.Unlock(vehicle)
     if IsDuplicityVersion() then
         return false
-    else
-        local plate = GetVehicleNumberPlateText(vehicle)
-        if bridge.HasKey(vehicle) then
-            SetVehicleDoorsLocked(vehicle, 1)
-            exports['qs-vehiclekeys']:SetLockStatus(plate, 1)
-            return true
-        end
-        return false
     end
+    
+    local plate = GetVehicleNumberPlateText(vehicle)
+    if bridge.HasKey(vehicle) then
+        SetVehicleDoorsLocked(vehicle, 1)
+        exports['qs-vehiclekeys']:SetLockStatus(plate, 1)
+        return true
+    end
+    return false
 end
 
 return bridge

@@ -142,9 +142,16 @@ end
 ---@param data table|string
 function oxe.ShowTextUI(data)
     if type(data) == 'string' then
-        data = { position = 'right-center', description = data }
+        lib.showTextUI(data, { position = 'right-center' })
+    else
+        local options = {}
+        for k, v in pairs(data) do
+            if k ~= 'description' then
+                options[k] = v
+            end
+        end
+        lib.showTextUI(data.description, options)
     end
-    lib.showTextUI(data.description, data)
 end
 
 ---Hide text UI

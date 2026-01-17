@@ -6,15 +6,15 @@ local bridge = {}
 function bridge.Notify(data)
     if IsDuplicityVersion() then
         return
-    else
-        local notification = {
-            title = data.title or 'Notification',
-            message = data.description or data.message or '',
-            icon = data.icon or 'bell',
-            timeout = data.duration or 5000
-        }
-        exports['qs-smartphone-pro']:SendNotification(notification)
     end
+    
+    local notification = {
+        title = data.title or 'Notification',
+        message = data.description or data.message or '',
+        icon = data.icon or 'bell',
+        timeout = data.duration or 5000
+    }
+    exports['qs-smartphone-pro']:SendNotification(notification)
 end
 
 ---Send phone message
@@ -23,9 +23,9 @@ end
 function bridge.SendMessage(number, message)
     if IsDuplicityVersion() then
         return
-    else
-        TriggerServerEvent('qs-smartphone:server:SendMessage', number, message)
     end
+    
+    TriggerServerEvent('qs-smartphone:server:SendMessage', number, message)
 end
 
 return bridge

@@ -11,15 +11,16 @@ function bridge.HasItem(item, amount)
         return false -- Must be called client-side or with source
     else
         -- Client side
-        local items = exports.ox_inventory:Search('count', item)
         if type(item) == 'table' then
             local total = 0
             for _, itm in pairs(item) do
-                total = total + (items[itm] or 0)
+                local count = exports.ox_inventory:Search('count', itm)
+                total = total + (count or 0)
             end
             return total >= (amount or 1)
         else
-            return (items or 0) >= (amount or 1)
+            local count = exports.ox_inventory:Search('count', item)
+            return (count or 0) >= (amount or 1)
         end
     end
 end

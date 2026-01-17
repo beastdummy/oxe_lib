@@ -1,0 +1,28 @@
+{
+  "notification": {
+    "success": "Éxito",
+    "error": "Error",
+    "info": "Información",
+    "warning": "Advertencia"
+  },
+  "inventory": {
+    "item_added": "Objeto añadido: %s x%d",
+    "item_removed": "Objeto eliminado: %s x%d",
+    "item_not_found": "No tienes este objeto",
+    "inventory_full": "Tu inventario está lleno"
+  },
+  "vehicle": {
+    "locked": "Vehículo bloqueado",
+    "unlocked": "Vehículo desbloqueado",
+    "no_key": "No tienes la llave de este vehículo",
+    "not_in_vehicle": "No estás en un vehículo"
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "submit": "Enviar"
+  }
+}

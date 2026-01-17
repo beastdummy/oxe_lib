@@ -1,0 +1,28 @@
+{
+  "notification": {
+    "success": "Success",
+    "error": "Error",
+    "info": "Information",
+    "warning": "Warning"
+  },
+  "inventory": {
+    "item_added": "Item added: %s x%d",
+    "item_removed": "Item removed: %s x%d",
+    "item_not_found": "You don't have this item",
+    "inventory_full": "Your inventory is full"
+  },
+  "vehicle": {
+    "locked": "Vehicle locked",
+    "unlocked": "Vehicle unlocked",
+    "no_key": "You don't have the key for this vehicle",
+    "not_in_vehicle": "You are not in a vehicle"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "submit": "Submit"
+  }
+}

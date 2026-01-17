@@ -20,13 +20,14 @@ function utils.formatCurrency(amount)
     
     -- Format with thousands separator and 2 decimal places
     local formatted = string.format('%.2f', amount)
-    local k
-    formatted, k = formatted:gsub('^(-?%d+)(%d%d%d)', '%1,%2')
-    while k ~= 0 do
-        formatted, k = formatted:gsub('^(-?%d+)(%d%d%d),', '%1,%2,')
-    end
+    local int_part, dec_part = formatted:match('([^%.]+)%.(.+)')
     
-    return ('%s%s'):format(symbol, formatted)
+    -- Add thousands separators
+    local reversed = int_part:reverse()
+    local with_commas = reversed:gsub('(%d%d%d)', '%1,')
+    int_part = with_commas:reverse():gsub('^,', '')
+    
+    return ('%s%s.%s'):format(symbol, int_part, dec_part)
 end
 
 ---Get distance between two coordinates
